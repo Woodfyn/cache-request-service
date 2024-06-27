@@ -1,0 +1,26 @@
+linters:
+  disable-all: true
+  enable:
+    - govet
+    - staticcheck
+    - gofmt
+    - goimports
+    - errcheck
+    - ineffassign
+    - unused
+
+run:
+  timeout: 5m
+
+output:
+  formats:
+    - format: colored-line-number
+      path: stdout
+
+issues:
+  exclude-use-default: false
+  max-issues-per-linter: 50
+  max-same-issues: 3
+  new: true
+  new-from-rev: HEAD
+  fix: true

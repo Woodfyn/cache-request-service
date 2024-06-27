@@ -3,23 +3,23 @@ syntax = "proto3";
 package cache_service;
 
 import "google/protobuf/duration.proto";
-import "google/protobuf/any.proto";
 
 option go_package = "../pkg/proto/cache_service";
 
 message CreateCacheRequest {
     string key = 1;
-    google.protobuf.Any value = 2;
+    bytes value = 2;
     google.protobuf.Duration ttl = 3;
 }
 
 message UpdateCacheRequest {
     string key = 1;
-    google.protobuf.Any value = 2;
+    bytes value = 2;
+    google.protobuf.Duration ttl = 3;
 }
 
 message CacheResponse {
-    google.protobuf.Any value = 1;
+    bytes value = 1;
 }
 
 message KeyCacheRequest {

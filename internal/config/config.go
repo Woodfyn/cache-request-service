@@ -12,7 +12,12 @@ var (
 )
 
 type Config struct {
-	RedisConfig RedisConfig
+	ServerConfig ServerConfig `mapstructure:"server"`
+	RedisConfig  RedisConfig  `mapstructure:"redis"`
+}
+
+type ServerConfig struct {
+	Port string `mapstructure:"port"`
 }
 
 type RedisConfig struct {

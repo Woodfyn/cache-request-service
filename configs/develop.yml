@@ -1,2 +1,5 @@
 redis:
   db: 0
+
+server:
+  port: "3000"

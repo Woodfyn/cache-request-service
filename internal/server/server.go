@@ -19,13 +19,15 @@ func NewServer(cacheServiceServer cache_service.CacheServiceServer) *Server {
 	}
 }
 
-func (s *Server) Start(port string) error {
+func (s *Server) Run(port string) {
 	lis, err := net.Listen("tcp", ":"+port)
 	if err != nil {
-		return err
+		panic(err)
 	}
 
 	cache_service.RegisterCacheServiceServer(s.grpcServer, s.cacheServiceServer)
 
-	return s.grpcServer.Serve(lis)
+	if err := s.grpcServer.Serve(lis); err != nil {
+		panic(err)
+	}
 }
