@@ -3,7 +3,7 @@ package handler
 import (
 	"context"
 
-	cache_service "github.com/Woodfyn/cache-service/pkg/proto"
+	cache_service "github.com/Woodfyn/chat-api-cache-service/pkg/proto"
 )
 
 func (h *Handler) Create(ctx context.Context, req *cache_service.CreateCacheRequest) (*cache_service.Empty, error) {

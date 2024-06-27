@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	cache_service "github.com/Woodfyn/cache-service/pkg/proto"
+	cache_service "github.com/Woodfyn/chat-api-cache-service/pkg/proto"
 )
 
 type CacheRepositoryRedis interface {

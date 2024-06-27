@@ -3,13 +3,13 @@ package app
 import (
 	"context"
 
-	"github.com/Woodfyn/cache-service/internal/config"
-	"github.com/Woodfyn/cache-service/internal/handler"
-	"github.com/Woodfyn/cache-service/internal/repository/rdb"
-	"github.com/Woodfyn/cache-service/internal/server"
-	"github.com/Woodfyn/cache-service/internal/service"
-	"github.com/Woodfyn/cache-service/pkg/rdbclient"
-	"github.com/Woodfyn/cache-service/pkg/signaler"
+	"github.com/Woodfyn/chat-api-cache-service/internal/config"
+	"github.com/Woodfyn/chat-api-cache-service/internal/handler"
+	"github.com/Woodfyn/chat-api-cache-service/internal/repository/rdb"
+	"github.com/Woodfyn/chat-api-cache-service/internal/server"
+	"github.com/Woodfyn/chat-api-cache-service/internal/service"
+	"github.com/Woodfyn/chat-api-cache-service/pkg/rdbclient"
+	"github.com/Woodfyn/chat-api-cache-service/pkg/signaler"
 )
 
 var (

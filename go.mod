@@ -1,4 +1,4 @@
-module github.com/Woodfyn/cache-service
+module github.com/Woodfyn/chat-api-cache-service
 
 go 1.22.2
 

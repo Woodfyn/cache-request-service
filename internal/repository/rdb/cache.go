@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/Woodfyn/cache-service/internal/core"
+	"github.com/Woodfyn/chat-api-cache-service/internal/core"
 	"github.com/redis/go-redis/v9"
 )
 

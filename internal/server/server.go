@@ -3,7 +3,7 @@ package server
 import (
 	"net"
 
-	cache_service "github.com/Woodfyn/cache-service/pkg/proto"
+	cache_service "github.com/Woodfyn/chat-api-cache-service/pkg/proto"
 	"google.golang.org/grpc"
 )
 
