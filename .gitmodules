@@ -1,0 +1,3 @@
+[submodule "chat-api-cache-service"]
+	path = chat-api-cache-service
+	url = https://github.com/Woodfyn/chat-api-cache-service
