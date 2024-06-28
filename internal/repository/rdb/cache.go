@@ -25,14 +25,19 @@ func (c *Cache) Create(ctx context.Context, key string, value []byte, ttl time.D
 func (c *Cache) Get(ctx context.Context, key string) ([]byte, error) {
 	result, err := c.rdb.Get(ctx, key).Result()
 	if err == redis.Nil {
-		return nil, core.ErrCacheIsExpired
+		return nil, core.ErrCacheIsExpiredOrNotFound
 	}
 
 	return []byte(result), err
 }
 
 func (c *Cache) Delete(ctx context.Context, key string) error {
-	return c.rdb.Del(ctx, key).Err()
+	err := c.rdb.Del(ctx, key).Err()
+	if err != redis.Nil {
+		return core.ErrCacheIsExpiredOrNotFound
+	}
+
+	return err
 }
 
 func (c *Cache) Update(ctx context.Context, key string, value []byte, ttl time.Duration) error {
