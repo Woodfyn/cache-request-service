@@ -6,31 +6,77 @@ import "google/protobuf/duration.proto";
 
 option go_package = "../pkg/proto/cache_service";
 
-message CreateCacheRequest {
-    string key = 1;
-    bytes value = 2;
-    google.protobuf.Duration ttl = 3;
+message Cache {
+    message Profile {
+        int64 id = 1;
+        string phone = 2;
+        string username = 3;
+        string avatarUrl = 4;
+    }
+
+    message Avatar {
+        int64 id = 1;
+        string avatarUrl = 2;
+    }
 }
 
-message UpdateCacheRequest {
-    string key = 1;
-    bytes value = 2;
-    google.protobuf.Duration ttl = 3;
+message Request {
+    message Create {
+        message Profile {
+            Cache.Profile ProfileCache = 1;
+            string key = 2;
+            google.protobuf.Duration ttl = 3;
+        }
+
+        message Avatars {
+            repeated Cache.Avatar AvatarCache = 1;
+            string key = 2;
+            google.protobuf.Duration ttl = 3;
+        }
+    }
+    
+    message Update {
+        message Profile {
+            Cache.Profile ProfileCache = 1;
+            string key = 2;
+            google.protobuf.Duration ttl = 3;
+        }
+
+        message Avatars {
+            repeated Cache.Avatar AvatarCache = 1;
+            string key = 2;
+            google.protobuf.Duration ttl = 3;
+        }
+    }
+    
+    message Key {
+        string key = 1;
+    }
 }
 
-message CacheResponse {
-    bytes value = 1;
+message Response {
+    message Get {
+        message Profile {
+            Cache.Profile ProfileCache = 1;
+        }
+
+        message Avatars {
+            repeated Cache.Avatar AvatarCache = 1;
+        }
+    }
+
+    message Empty {}
 }
 
-message KeyCacheRequest {
-    string key = 1;
-}
-
-message Empty {}
 
 service CacheService {
-    rpc Create(CreateCacheRequest) returns (Empty) {}
-    rpc Get(KeyCacheRequest) returns (CacheResponse) {}
-    rpc Delete(KeyCacheRequest) returns (Empty) {}
-    rpc Update(UpdateCacheRequest) returns (Empty) {}
+    rpc CreateProfile(Request.Create.Profile) returns (Response.Empty) {}
+    rpc GetProfile(Request.Key) returns (Response.Get.Profile) {}
+    rpc UpdateProfile(Request.Update.Profile) returns (Response.Empty) {}
+
+    rpc CreateAvatars(Request.Create.Avatars) returns (Response.Empty) {}
+    rpc GetAvatars(Request.Key) returns (Response.Get.Avatars) {}
+    rpc UpdateAvatars(Request.Update.Avatars) returns (Response.Empty) {}
+
+    rpc Delete(Request.Key) returns (Response.Empty) {}
 }

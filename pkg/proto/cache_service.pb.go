@@ -21,18 +21,14 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type CreateCacheRequest struct {
+type Cache struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
-
-	Key   string               `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
-	Value []byte               `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
-	Ttl   *durationpb.Duration `protobuf:"bytes,3,opt,name=ttl,proto3" json:"ttl,omitempty"`
 }
 
-func (x *CreateCacheRequest) Reset() {
-	*x = CreateCacheRequest{}
+func (x *Cache) Reset() {
+	*x = Cache{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_cache_service_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -40,13 +36,13 @@ func (x *CreateCacheRequest) Reset() {
 	}
 }
 
-func (x *CreateCacheRequest) String() string {
+func (x *Cache) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CreateCacheRequest) ProtoMessage() {}
+func (*Cache) ProtoMessage() {}
 
-func (x *CreateCacheRequest) ProtoReflect() protoreflect.Message {
+func (x *Cache) ProtoReflect() protoreflect.Message {
 	mi := &file_cache_service_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -58,44 +54,19 @@ func (x *CreateCacheRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CreateCacheRequest.ProtoReflect.Descriptor instead.
-func (*CreateCacheRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use Cache.ProtoReflect.Descriptor instead.
+func (*Cache) Descriptor() ([]byte, []int) {
 	return file_cache_service_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *CreateCacheRequest) GetKey() string {
-	if x != nil {
-		return x.Key
-	}
-	return ""
-}
-
-func (x *CreateCacheRequest) GetValue() []byte {
-	if x != nil {
-		return x.Value
-	}
-	return nil
-}
-
-func (x *CreateCacheRequest) GetTtl() *durationpb.Duration {
-	if x != nil {
-		return x.Ttl
-	}
-	return nil
-}
-
-type UpdateCacheRequest struct {
+type Request struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
-
-	Key   string               `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
-	Value []byte               `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
-	Ttl   *durationpb.Duration `protobuf:"bytes,3,opt,name=ttl,proto3" json:"ttl,omitempty"`
 }
 
-func (x *UpdateCacheRequest) Reset() {
-	*x = UpdateCacheRequest{}
+func (x *Request) Reset() {
+	*x = Request{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_cache_service_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -103,13 +74,13 @@ func (x *UpdateCacheRequest) Reset() {
 	}
 }
 
-func (x *UpdateCacheRequest) String() string {
+func (x *Request) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateCacheRequest) ProtoMessage() {}
+func (*Request) ProtoMessage() {}
 
-func (x *UpdateCacheRequest) ProtoReflect() protoreflect.Message {
+func (x *Request) ProtoReflect() protoreflect.Message {
 	mi := &file_cache_service_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -121,42 +92,19 @@ func (x *UpdateCacheRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateCacheRequest.ProtoReflect.Descriptor instead.
-func (*UpdateCacheRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use Request.ProtoReflect.Descriptor instead.
+func (*Request) Descriptor() ([]byte, []int) {
 	return file_cache_service_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *UpdateCacheRequest) GetKey() string {
-	if x != nil {
-		return x.Key
-	}
-	return ""
-}
-
-func (x *UpdateCacheRequest) GetValue() []byte {
-	if x != nil {
-		return x.Value
-	}
-	return nil
-}
-
-func (x *UpdateCacheRequest) GetTtl() *durationpb.Duration {
-	if x != nil {
-		return x.Ttl
-	}
-	return nil
-}
-
-type CacheResponse struct {
+type Response struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
-
-	Value []byte `protobuf:"bytes,1,opt,name=value,proto3" json:"value,omitempty"`
 }
 
-func (x *CacheResponse) Reset() {
-	*x = CacheResponse{}
+func (x *Response) Reset() {
+	*x = Response{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_cache_service_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -164,13 +112,13 @@ func (x *CacheResponse) Reset() {
 	}
 }
 
-func (x *CacheResponse) String() string {
+func (x *Response) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CacheResponse) ProtoMessage() {}
+func (*Response) ProtoMessage() {}
 
-func (x *CacheResponse) ProtoReflect() protoreflect.Message {
+func (x *Response) ProtoReflect() protoreflect.Message {
 	mi := &file_cache_service_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -182,28 +130,24 @@ func (x *CacheResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CacheResponse.ProtoReflect.Descriptor instead.
-func (*CacheResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use Response.ProtoReflect.Descriptor instead.
+func (*Response) Descriptor() ([]byte, []int) {
 	return file_cache_service_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *CacheResponse) GetValue() []byte {
-	if x != nil {
-		return x.Value
-	}
-	return nil
-}
-
-type KeyCacheRequest struct {
+type Cache_Profile struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Key string `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
+	Id        int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Phone     string `protobuf:"bytes,2,opt,name=phone,proto3" json:"phone,omitempty"`
+	Username  string `protobuf:"bytes,3,opt,name=username,proto3" json:"username,omitempty"`
+	AvatarUrl string `protobuf:"bytes,4,opt,name=avatarUrl,proto3" json:"avatarUrl,omitempty"`
 }
 
-func (x *KeyCacheRequest) Reset() {
-	*x = KeyCacheRequest{}
+func (x *Cache_Profile) Reset() {
+	*x = Cache_Profile{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_cache_service_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -211,13 +155,13 @@ func (x *KeyCacheRequest) Reset() {
 	}
 }
 
-func (x *KeyCacheRequest) String() string {
+func (x *Cache_Profile) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*KeyCacheRequest) ProtoMessage() {}
+func (*Cache_Profile) ProtoMessage() {}
 
-func (x *KeyCacheRequest) ProtoReflect() protoreflect.Message {
+func (x *Cache_Profile) ProtoReflect() protoreflect.Message {
 	mi := &file_cache_service_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -229,26 +173,50 @@ func (x *KeyCacheRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use KeyCacheRequest.ProtoReflect.Descriptor instead.
-func (*KeyCacheRequest) Descriptor() ([]byte, []int) {
-	return file_cache_service_proto_rawDescGZIP(), []int{3}
+// Deprecated: Use Cache_Profile.ProtoReflect.Descriptor instead.
+func (*Cache_Profile) Descriptor() ([]byte, []int) {
+	return file_cache_service_proto_rawDescGZIP(), []int{0, 0}
 }
 
-func (x *KeyCacheRequest) GetKey() string {
+func (x *Cache_Profile) GetId() int64 {
 	if x != nil {
-		return x.Key
+		return x.Id
+	}
+	return 0
+}
+
+func (x *Cache_Profile) GetPhone() string {
+	if x != nil {
+		return x.Phone
 	}
 	return ""
 }
 
-type Empty struct {
+func (x *Cache_Profile) GetUsername() string {
+	if x != nil {
+		return x.Username
+	}
+	return ""
+}
+
+func (x *Cache_Profile) GetAvatarUrl() string {
+	if x != nil {
+		return x.AvatarUrl
+	}
+	return ""
+}
+
+type Cache_Avatar struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
+
+	Id        int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	AvatarUrl string `protobuf:"bytes,2,opt,name=avatarUrl,proto3" json:"avatarUrl,omitempty"`
 }
 
-func (x *Empty) Reset() {
-	*x = Empty{}
+func (x *Cache_Avatar) Reset() {
+	*x = Cache_Avatar{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_cache_service_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -256,13 +224,13 @@ func (x *Empty) Reset() {
 	}
 }
 
-func (x *Empty) String() string {
+func (x *Cache_Avatar) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*Empty) ProtoMessage() {}
+func (*Cache_Avatar) ProtoMessage() {}
 
-func (x *Empty) ProtoReflect() protoreflect.Message {
+func (x *Cache_Avatar) ProtoReflect() protoreflect.Message {
 	mi := &file_cache_service_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -274,9 +242,568 @@ func (x *Empty) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use Empty.ProtoReflect.Descriptor instead.
-func (*Empty) Descriptor() ([]byte, []int) {
-	return file_cache_service_proto_rawDescGZIP(), []int{4}
+// Deprecated: Use Cache_Avatar.ProtoReflect.Descriptor instead.
+func (*Cache_Avatar) Descriptor() ([]byte, []int) {
+	return file_cache_service_proto_rawDescGZIP(), []int{0, 1}
+}
+
+func (x *Cache_Avatar) GetId() int64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *Cache_Avatar) GetAvatarUrl() string {
+	if x != nil {
+		return x.AvatarUrl
+	}
+	return ""
+}
+
+type Request_Create struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *Request_Create) Reset() {
+	*x = Request_Create{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_cache_service_proto_msgTypes[5]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Request_Create) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Request_Create) ProtoMessage() {}
+
+func (x *Request_Create) ProtoReflect() protoreflect.Message {
+	mi := &file_cache_service_proto_msgTypes[5]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Request_Create.ProtoReflect.Descriptor instead.
+func (*Request_Create) Descriptor() ([]byte, []int) {
+	return file_cache_service_proto_rawDescGZIP(), []int{1, 0}
+}
+
+type Request_Update struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *Request_Update) Reset() {
+	*x = Request_Update{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_cache_service_proto_msgTypes[6]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Request_Update) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Request_Update) ProtoMessage() {}
+
+func (x *Request_Update) ProtoReflect() protoreflect.Message {
+	mi := &file_cache_service_proto_msgTypes[6]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Request_Update.ProtoReflect.Descriptor instead.
+func (*Request_Update) Descriptor() ([]byte, []int) {
+	return file_cache_service_proto_rawDescGZIP(), []int{1, 1}
+}
+
+type Request_Key struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Key string `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
+}
+
+func (x *Request_Key) Reset() {
+	*x = Request_Key{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_cache_service_proto_msgTypes[7]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Request_Key) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Request_Key) ProtoMessage() {}
+
+func (x *Request_Key) ProtoReflect() protoreflect.Message {
+	mi := &file_cache_service_proto_msgTypes[7]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Request_Key.ProtoReflect.Descriptor instead.
+func (*Request_Key) Descriptor() ([]byte, []int) {
+	return file_cache_service_proto_rawDescGZIP(), []int{1, 2}
+}
+
+func (x *Request_Key) GetKey() string {
+	if x != nil {
+		return x.Key
+	}
+	return ""
+}
+
+type Request_Create_Profile struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ProfileCache *Cache_Profile       `protobuf:"bytes,1,opt,name=ProfileCache,proto3" json:"ProfileCache,omitempty"`
+	Key          string               `protobuf:"bytes,2,opt,name=key,proto3" json:"key,omitempty"`
+	Ttl          *durationpb.Duration `protobuf:"bytes,3,opt,name=ttl,proto3" json:"ttl,omitempty"`
+}
+
+func (x *Request_Create_Profile) Reset() {
+	*x = Request_Create_Profile{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_cache_service_proto_msgTypes[8]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Request_Create_Profile) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Request_Create_Profile) ProtoMessage() {}
+
+func (x *Request_Create_Profile) ProtoReflect() protoreflect.Message {
+	mi := &file_cache_service_proto_msgTypes[8]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Request_Create_Profile.ProtoReflect.Descriptor instead.
+func (*Request_Create_Profile) Descriptor() ([]byte, []int) {
+	return file_cache_service_proto_rawDescGZIP(), []int{1, 0, 0}
+}
+
+func (x *Request_Create_Profile) GetProfileCache() *Cache_Profile {
+	if x != nil {
+		return x.ProfileCache
+	}
+	return nil
+}
+
+func (x *Request_Create_Profile) GetKey() string {
+	if x != nil {
+		return x.Key
+	}
+	return ""
+}
+
+func (x *Request_Create_Profile) GetTtl() *durationpb.Duration {
+	if x != nil {
+		return x.Ttl
+	}
+	return nil
+}
+
+type Request_Create_Avatars struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	AvatarCache []*Cache_Avatar      `protobuf:"bytes,1,rep,name=AvatarCache,proto3" json:"AvatarCache,omitempty"`
+	Key         string               `protobuf:"bytes,2,opt,name=key,proto3" json:"key,omitempty"`
+	Ttl         *durationpb.Duration `protobuf:"bytes,3,opt,name=ttl,proto3" json:"ttl,omitempty"`
+}
+
+func (x *Request_Create_Avatars) Reset() {
+	*x = Request_Create_Avatars{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_cache_service_proto_msgTypes[9]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Request_Create_Avatars) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Request_Create_Avatars) ProtoMessage() {}
+
+func (x *Request_Create_Avatars) ProtoReflect() protoreflect.Message {
+	mi := &file_cache_service_proto_msgTypes[9]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Request_Create_Avatars.ProtoReflect.Descriptor instead.
+func (*Request_Create_Avatars) Descriptor() ([]byte, []int) {
+	return file_cache_service_proto_rawDescGZIP(), []int{1, 0, 1}
+}
+
+func (x *Request_Create_Avatars) GetAvatarCache() []*Cache_Avatar {
+	if x != nil {
+		return x.AvatarCache
+	}
+	return nil
+}
+
+func (x *Request_Create_Avatars) GetKey() string {
+	if x != nil {
+		return x.Key
+	}
+	return ""
+}
+
+func (x *Request_Create_Avatars) GetTtl() *durationpb.Duration {
+	if x != nil {
+		return x.Ttl
+	}
+	return nil
+}
+
+type Request_Update_Profile struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ProfileCache *Cache_Profile       `protobuf:"bytes,1,opt,name=ProfileCache,proto3" json:"ProfileCache,omitempty"`
+	Key          string               `protobuf:"bytes,2,opt,name=key,proto3" json:"key,omitempty"`
+	Ttl          *durationpb.Duration `protobuf:"bytes,3,opt,name=ttl,proto3" json:"ttl,omitempty"`
+}
+
+func (x *Request_Update_Profile) Reset() {
+	*x = Request_Update_Profile{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_cache_service_proto_msgTypes[10]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Request_Update_Profile) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Request_Update_Profile) ProtoMessage() {}
+
+func (x *Request_Update_Profile) ProtoReflect() protoreflect.Message {
+	mi := &file_cache_service_proto_msgTypes[10]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Request_Update_Profile.ProtoReflect.Descriptor instead.
+func (*Request_Update_Profile) Descriptor() ([]byte, []int) {
+	return file_cache_service_proto_rawDescGZIP(), []int{1, 1, 0}
+}
+
+func (x *Request_Update_Profile) GetProfileCache() *Cache_Profile {
+	if x != nil {
+		return x.ProfileCache
+	}
+	return nil
+}
+
+func (x *Request_Update_Profile) GetKey() string {
+	if x != nil {
+		return x.Key
+	}
+	return ""
+}
+
+func (x *Request_Update_Profile) GetTtl() *durationpb.Duration {
+	if x != nil {
+		return x.Ttl
+	}
+	return nil
+}
+
+type Request_Update_Avatars struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	AvatarCache []*Cache_Avatar      `protobuf:"bytes,1,rep,name=AvatarCache,proto3" json:"AvatarCache,omitempty"`
+	Key         string               `protobuf:"bytes,2,opt,name=key,proto3" json:"key,omitempty"`
+	Ttl         *durationpb.Duration `protobuf:"bytes,3,opt,name=ttl,proto3" json:"ttl,omitempty"`
+}
+
+func (x *Request_Update_Avatars) Reset() {
+	*x = Request_Update_Avatars{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_cache_service_proto_msgTypes[11]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Request_Update_Avatars) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Request_Update_Avatars) ProtoMessage() {}
+
+func (x *Request_Update_Avatars) ProtoReflect() protoreflect.Message {
+	mi := &file_cache_service_proto_msgTypes[11]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Request_Update_Avatars.ProtoReflect.Descriptor instead.
+func (*Request_Update_Avatars) Descriptor() ([]byte, []int) {
+	return file_cache_service_proto_rawDescGZIP(), []int{1, 1, 1}
+}
+
+func (x *Request_Update_Avatars) GetAvatarCache() []*Cache_Avatar {
+	if x != nil {
+		return x.AvatarCache
+	}
+	return nil
+}
+
+func (x *Request_Update_Avatars) GetKey() string {
+	if x != nil {
+		return x.Key
+	}
+	return ""
+}
+
+func (x *Request_Update_Avatars) GetTtl() *durationpb.Duration {
+	if x != nil {
+		return x.Ttl
+	}
+	return nil
+}
+
+type Response_Get struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *Response_Get) Reset() {
+	*x = Response_Get{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_cache_service_proto_msgTypes[12]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Response_Get) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Response_Get) ProtoMessage() {}
+
+func (x *Response_Get) ProtoReflect() protoreflect.Message {
+	mi := &file_cache_service_proto_msgTypes[12]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Response_Get.ProtoReflect.Descriptor instead.
+func (*Response_Get) Descriptor() ([]byte, []int) {
+	return file_cache_service_proto_rawDescGZIP(), []int{2, 0}
+}
+
+type Response_Empty struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *Response_Empty) Reset() {
+	*x = Response_Empty{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_cache_service_proto_msgTypes[13]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Response_Empty) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Response_Empty) ProtoMessage() {}
+
+func (x *Response_Empty) ProtoReflect() protoreflect.Message {
+	mi := &file_cache_service_proto_msgTypes[13]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Response_Empty.ProtoReflect.Descriptor instead.
+func (*Response_Empty) Descriptor() ([]byte, []int) {
+	return file_cache_service_proto_rawDescGZIP(), []int{2, 1}
+}
+
+type Response_Get_Profile struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ProfileCache *Cache_Profile `protobuf:"bytes,1,opt,name=ProfileCache,proto3" json:"ProfileCache,omitempty"`
+}
+
+func (x *Response_Get_Profile) Reset() {
+	*x = Response_Get_Profile{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_cache_service_proto_msgTypes[14]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Response_Get_Profile) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Response_Get_Profile) ProtoMessage() {}
+
+func (x *Response_Get_Profile) ProtoReflect() protoreflect.Message {
+	mi := &file_cache_service_proto_msgTypes[14]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Response_Get_Profile.ProtoReflect.Descriptor instead.
+func (*Response_Get_Profile) Descriptor() ([]byte, []int) {
+	return file_cache_service_proto_rawDescGZIP(), []int{2, 0, 0}
+}
+
+func (x *Response_Get_Profile) GetProfileCache() *Cache_Profile {
+	if x != nil {
+		return x.ProfileCache
+	}
+	return nil
+}
+
+type Response_Get_Avatars struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	AvatarCache []*Cache_Avatar `protobuf:"bytes,1,rep,name=AvatarCache,proto3" json:"AvatarCache,omitempty"`
+}
+
+func (x *Response_Get_Avatars) Reset() {
+	*x = Response_Get_Avatars{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_cache_service_proto_msgTypes[15]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Response_Get_Avatars) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Response_Get_Avatars) ProtoMessage() {}
+
+func (x *Response_Get_Avatars) ProtoReflect() protoreflect.Message {
+	mi := &file_cache_service_proto_msgTypes[15]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Response_Get_Avatars.ProtoReflect.Descriptor instead.
+func (*Response_Get_Avatars) Descriptor() ([]byte, []int) {
+	return file_cache_service_proto_rawDescGZIP(), []int{2, 0, 1}
+}
+
+func (x *Response_Get_Avatars) GetAvatarCache() []*Cache_Avatar {
+	if x != nil {
+		return x.AvatarCache
+	}
+	return nil
 }
 
 var File_cache_service_proto protoreflect.FileDescriptor
@@ -286,46 +813,108 @@ var file_cache_service_proto_rawDesc = []byte{
 	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x0d, 0x63, 0x61, 0x63, 0x68, 0x65, 0x5f, 0x73, 0x65, 0x72,
 	0x76, 0x69, 0x63, 0x65, 0x1a, 0x1e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x70, 0x72, 0x6f,
 	0x74, 0x6f, 0x62, 0x75, 0x66, 0x2f, 0x64, 0x75, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x70,
-	0x72, 0x6f, 0x74, 0x6f, 0x22, 0x69, 0x0a, 0x12, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x43, 0x61,
-	0x63, 0x68, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65,
-	0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x14, 0x0a, 0x05,
-	0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0c, 0x52, 0x05, 0x76, 0x61, 0x6c,
-	0x75, 0x65, 0x12, 0x2b, 0x0a, 0x03, 0x74, 0x74, 0x6c, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0b, 0x32,
+	0x72, 0x6f, 0x74, 0x6f, 0x22, 0xaa, 0x01, 0x0a, 0x05, 0x43, 0x61, 0x63, 0x68, 0x65, 0x1a, 0x69,
+	0x0a, 0x07, 0x50, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x02, 0x69, 0x64, 0x12, 0x14, 0x0a, 0x05, 0x70, 0x68, 0x6f,
+	0x6e, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x70, 0x68, 0x6f, 0x6e, 0x65, 0x12,
+	0x1a, 0x0a, 0x08, 0x75, 0x73, 0x65, 0x72, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x08, 0x75, 0x73, 0x65, 0x72, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x1c, 0x0a, 0x09, 0x61,
+	0x76, 0x61, 0x74, 0x61, 0x72, 0x55, 0x72, 0x6c, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09,
+	0x61, 0x76, 0x61, 0x74, 0x61, 0x72, 0x55, 0x72, 0x6c, 0x1a, 0x36, 0x0a, 0x06, 0x41, 0x76, 0x61,
+	0x74, 0x61, 0x72, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52,
+	0x02, 0x69, 0x64, 0x12, 0x1c, 0x0a, 0x09, 0x61, 0x76, 0x61, 0x74, 0x61, 0x72, 0x55, 0x72, 0x6c,
+	0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x61, 0x76, 0x61, 0x74, 0x61, 0x72, 0x55, 0x72,
+	0x6c, 0x22, 0xe6, 0x04, 0x0a, 0x07, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x9f, 0x02,
+	0x0a, 0x06, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x1a, 0x8a, 0x01, 0x0a, 0x07, 0x50, 0x72, 0x6f,
+	0x66, 0x69, 0x6c, 0x65, 0x12, 0x40, 0x0a, 0x0c, 0x50, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x43,
+	0x61, 0x63, 0x68, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1c, 0x2e, 0x63, 0x61, 0x63,
+	0x68, 0x65, 0x5f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x61, 0x63, 0x68, 0x65,
+	0x2e, 0x50, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x52, 0x0c, 0x50, 0x72, 0x6f, 0x66, 0x69, 0x6c,
+	0x65, 0x43, 0x61, 0x63, 0x68, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x02, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x2b, 0x0a, 0x03, 0x74, 0x74, 0x6c, 0x18,
+	0x03, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x19, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x44, 0x75, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e,
+	0x52, 0x03, 0x74, 0x74, 0x6c, 0x1a, 0x87, 0x01, 0x0a, 0x07, 0x41, 0x76, 0x61, 0x74, 0x61, 0x72,
+	0x73, 0x12, 0x3d, 0x0a, 0x0b, 0x41, 0x76, 0x61, 0x74, 0x61, 0x72, 0x43, 0x61, 0x63, 0x68, 0x65,
+	0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1b, 0x2e, 0x63, 0x61, 0x63, 0x68, 0x65, 0x5f, 0x73,
+	0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x61, 0x63, 0x68, 0x65, 0x2e, 0x41, 0x76, 0x61,
+	0x74, 0x61, 0x72, 0x52, 0x0b, 0x41, 0x76, 0x61, 0x74, 0x61, 0x72, 0x43, 0x61, 0x63, 0x68, 0x65,
+	0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b,
+	0x65, 0x79, 0x12, 0x2b, 0x0a, 0x03, 0x74, 0x74, 0x6c, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0b, 0x32,
 	0x19, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75,
-	0x66, 0x2e, 0x44, 0x75, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x03, 0x74, 0x74, 0x6c, 0x22,
-	0x69, 0x0a, 0x12, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x43, 0x61, 0x63, 0x68, 0x65, 0x52, 0x65,
-	0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x14, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65,
-	0x18, 0x02, 0x20, 0x01, 0x28, 0x0c, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x12, 0x2b, 0x0a,
-	0x03, 0x74, 0x74, 0x6c, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x19, 0x2e, 0x67, 0x6f, 0x6f,
-	0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x44, 0x75, 0x72,
-	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x03, 0x74, 0x74, 0x6c, 0x22, 0x25, 0x0a, 0x0d, 0x43, 0x61,
-	0x63, 0x68, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x76,
-	0x61, 0x6c, 0x75, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0c, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75,
-	0x65, 0x22, 0x23, 0x0a, 0x0f, 0x4b, 0x65, 0x79, 0x43, 0x61, 0x63, 0x68, 0x65, 0x52, 0x65, 0x71,
-	0x75, 0x65, 0x73, 0x74, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28,
-	0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x22, 0x07, 0x0a, 0x05, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x32,
-	0xa1, 0x02, 0x0a, 0x0c, 0x43, 0x61, 0x63, 0x68, 0x65, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
-	0x12, 0x43, 0x0a, 0x06, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x12, 0x21, 0x2e, 0x63, 0x61, 0x63,
-	0x68, 0x65, 0x5f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74,
-	0x65, 0x43, 0x61, 0x63, 0x68, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x14, 0x2e,
-	0x63, 0x61, 0x63, 0x68, 0x65, 0x5f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x45, 0x6d,
-	0x70, 0x74, 0x79, 0x22, 0x00, 0x12, 0x45, 0x0a, 0x03, 0x47, 0x65, 0x74, 0x12, 0x1e, 0x2e, 0x63,
-	0x61, 0x63, 0x68, 0x65, 0x5f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x4b, 0x65, 0x79,
-	0x43, 0x61, 0x63, 0x68, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1c, 0x2e, 0x63,
+	0x66, 0x2e, 0x44, 0x75, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x03, 0x74, 0x74, 0x6c, 0x1a,
+	0x9f, 0x02, 0x0a, 0x06, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x1a, 0x8a, 0x01, 0x0a, 0x07, 0x50,
+	0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x12, 0x40, 0x0a, 0x0c, 0x50, 0x72, 0x6f, 0x66, 0x69, 0x6c,
+	0x65, 0x43, 0x61, 0x63, 0x68, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1c, 0x2e, 0x63,
 	0x61, 0x63, 0x68, 0x65, 0x5f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x61, 0x63,
-	0x68, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12, 0x40, 0x0a, 0x06,
-	0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x12, 0x1e, 0x2e, 0x63, 0x61, 0x63, 0x68, 0x65, 0x5f, 0x73,
-	0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x4b, 0x65, 0x79, 0x43, 0x61, 0x63, 0x68, 0x65, 0x52,
-	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x14, 0x2e, 0x63, 0x61, 0x63, 0x68, 0x65, 0x5f, 0x73,
-	0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x22, 0x00, 0x12, 0x43,
-	0x0a, 0x06, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x12, 0x21, 0x2e, 0x63, 0x61, 0x63, 0x68, 0x65,
-	0x5f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x43,
-	0x61, 0x63, 0x68, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x14, 0x2e, 0x63, 0x61,
-	0x63, 0x68, 0x65, 0x5f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x45, 0x6d, 0x70, 0x74,
-	0x79, 0x22, 0x00, 0x42, 0x1c, 0x5a, 0x1a, 0x2e, 0x2e, 0x2f, 0x70, 0x6b, 0x67, 0x2f, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x2f, 0x63, 0x61, 0x63, 0x68, 0x65, 0x5f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63,
-	0x65, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x68, 0x65, 0x2e, 0x50, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x52, 0x0c, 0x50, 0x72, 0x6f, 0x66,
+	0x69, 0x6c, 0x65, 0x43, 0x61, 0x63, 0x68, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18,
+	0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x2b, 0x0a, 0x03, 0x74, 0x74,
+	0x6c, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x19, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
+	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x44, 0x75, 0x72, 0x61, 0x74, 0x69,
+	0x6f, 0x6e, 0x52, 0x03, 0x74, 0x74, 0x6c, 0x1a, 0x87, 0x01, 0x0a, 0x07, 0x41, 0x76, 0x61, 0x74,
+	0x61, 0x72, 0x73, 0x12, 0x3d, 0x0a, 0x0b, 0x41, 0x76, 0x61, 0x74, 0x61, 0x72, 0x43, 0x61, 0x63,
+	0x68, 0x65, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1b, 0x2e, 0x63, 0x61, 0x63, 0x68, 0x65,
+	0x5f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x61, 0x63, 0x68, 0x65, 0x2e, 0x41,
+	0x76, 0x61, 0x74, 0x61, 0x72, 0x52, 0x0b, 0x41, 0x76, 0x61, 0x74, 0x61, 0x72, 0x43, 0x61, 0x63,
+	0x68, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x03, 0x6b, 0x65, 0x79, 0x12, 0x2b, 0x0a, 0x03, 0x74, 0x74, 0x6c, 0x18, 0x03, 0x20, 0x01, 0x28,
+	0x0b, 0x32, 0x19, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
+	0x62, 0x75, 0x66, 0x2e, 0x44, 0x75, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x03, 0x74, 0x74,
+	0x6c, 0x1a, 0x17, 0x0a, 0x03, 0x4b, 0x65, 0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x22, 0xb2, 0x01, 0x0a, 0x08, 0x52,
+	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x1a, 0x9c, 0x01, 0x0a, 0x03, 0x47, 0x65, 0x74, 0x1a,
+	0x4b, 0x0a, 0x07, 0x50, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x12, 0x40, 0x0a, 0x0c, 0x50, 0x72,
+	0x6f, 0x66, 0x69, 0x6c, 0x65, 0x43, 0x61, 0x63, 0x68, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b,
+	0x32, 0x1c, 0x2e, 0x63, 0x61, 0x63, 0x68, 0x65, 0x5f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
+	0x2e, 0x43, 0x61, 0x63, 0x68, 0x65, 0x2e, 0x50, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x52, 0x0c,
+	0x50, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x43, 0x61, 0x63, 0x68, 0x65, 0x1a, 0x48, 0x0a, 0x07,
+	0x41, 0x76, 0x61, 0x74, 0x61, 0x72, 0x73, 0x12, 0x3d, 0x0a, 0x0b, 0x41, 0x76, 0x61, 0x74, 0x61,
+	0x72, 0x43, 0x61, 0x63, 0x68, 0x65, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1b, 0x2e, 0x63,
+	0x61, 0x63, 0x68, 0x65, 0x5f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x61, 0x63,
+	0x68, 0x65, 0x2e, 0x41, 0x76, 0x61, 0x74, 0x61, 0x72, 0x52, 0x0b, 0x41, 0x76, 0x61, 0x74, 0x61,
+	0x72, 0x43, 0x61, 0x63, 0x68, 0x65, 0x1a, 0x07, 0x0a, 0x05, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x32,
+	0xdb, 0x04, 0x0a, 0x0c, 0x43, 0x61, 0x63, 0x68, 0x65, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
+	0x12, 0x57, 0x0a, 0x0d, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x50, 0x72, 0x6f, 0x66, 0x69, 0x6c,
+	0x65, 0x12, 0x25, 0x2e, 0x63, 0x61, 0x63, 0x68, 0x65, 0x5f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63,
+	0x65, 0x2e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65,
+	0x2e, 0x50, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x1a, 0x1d, 0x2e, 0x63, 0x61, 0x63, 0x68, 0x65,
+	0x5f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
+	0x65, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x22, 0x00, 0x12, 0x4f, 0x0a, 0x0a, 0x47, 0x65, 0x74,
+	0x50, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x12, 0x1a, 0x2e, 0x63, 0x61, 0x63, 0x68, 0x65, 0x5f,
+	0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x2e,
+	0x4b, 0x65, 0x79, 0x1a, 0x23, 0x2e, 0x63, 0x61, 0x63, 0x68, 0x65, 0x5f, 0x73, 0x65, 0x72, 0x76,
+	0x69, 0x63, 0x65, 0x2e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x47, 0x65, 0x74,
+	0x2e, 0x50, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x22, 0x00, 0x12, 0x57, 0x0a, 0x0d, 0x55, 0x70,
+	0x64, 0x61, 0x74, 0x65, 0x50, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x12, 0x25, 0x2e, 0x63, 0x61,
+	0x63, 0x68, 0x65, 0x5f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x52, 0x65, 0x71, 0x75,
+	0x65, 0x73, 0x74, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x2e, 0x50, 0x72, 0x6f, 0x66, 0x69,
+	0x6c, 0x65, 0x1a, 0x1d, 0x2e, 0x63, 0x61, 0x63, 0x68, 0x65, 0x5f, 0x73, 0x65, 0x72, 0x76, 0x69,
+	0x63, 0x65, 0x2e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x45, 0x6d, 0x70, 0x74,
+	0x79, 0x22, 0x00, 0x12, 0x57, 0x0a, 0x0d, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x41, 0x76, 0x61,
+	0x74, 0x61, 0x72, 0x73, 0x12, 0x25, 0x2e, 0x63, 0x61, 0x63, 0x68, 0x65, 0x5f, 0x73, 0x65, 0x72,
+	0x76, 0x69, 0x63, 0x65, 0x2e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x2e, 0x43, 0x72, 0x65,
+	0x61, 0x74, 0x65, 0x2e, 0x41, 0x76, 0x61, 0x74, 0x61, 0x72, 0x73, 0x1a, 0x1d, 0x2e, 0x63, 0x61,
+	0x63, 0x68, 0x65, 0x5f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x52, 0x65, 0x73, 0x70,
+	0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x22, 0x00, 0x12, 0x4f, 0x0a, 0x0a,
+	0x47, 0x65, 0x74, 0x41, 0x76, 0x61, 0x74, 0x61, 0x72, 0x73, 0x12, 0x1a, 0x2e, 0x63, 0x61, 0x63,
+	0x68, 0x65, 0x5f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x52, 0x65, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x2e, 0x4b, 0x65, 0x79, 0x1a, 0x23, 0x2e, 0x63, 0x61, 0x63, 0x68, 0x65, 0x5f, 0x73,
+	0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e,
+	0x47, 0x65, 0x74, 0x2e, 0x41, 0x76, 0x61, 0x74, 0x61, 0x72, 0x73, 0x22, 0x00, 0x12, 0x57, 0x0a,
+	0x0d, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x41, 0x76, 0x61, 0x74, 0x61, 0x72, 0x73, 0x12, 0x25,
+	0x2e, 0x63, 0x61, 0x63, 0x68, 0x65, 0x5f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x52,
+	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x2e, 0x41, 0x76,
+	0x61, 0x74, 0x61, 0x72, 0x73, 0x1a, 0x1d, 0x2e, 0x63, 0x61, 0x63, 0x68, 0x65, 0x5f, 0x73, 0x65,
+	0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x45,
+	0x6d, 0x70, 0x74, 0x79, 0x22, 0x00, 0x12, 0x45, 0x0a, 0x06, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65,
+	0x12, 0x1a, 0x2e, 0x63, 0x61, 0x63, 0x68, 0x65, 0x5f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
+	0x2e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x2e, 0x4b, 0x65, 0x79, 0x1a, 0x1d, 0x2e, 0x63,
+	0x61, 0x63, 0x68, 0x65, 0x5f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x52, 0x65, 0x73,
+	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x22, 0x00, 0x42, 0x1c, 0x5a,
+	0x1a, 0x2e, 0x2e, 0x2f, 0x70, 0x6b, 0x67, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x63, 0x61,
+	0x63, 0x68, 0x65, 0x5f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x62, 0x06, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x33,
 }
 
 var (
@@ -340,31 +929,56 @@ func file_cache_service_proto_rawDescGZIP() []byte {
 	return file_cache_service_proto_rawDescData
 }
 
-var file_cache_service_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_cache_service_proto_msgTypes = make([]protoimpl.MessageInfo, 16)
 var file_cache_service_proto_goTypes = []any{
-	(*CreateCacheRequest)(nil),  // 0: cache_service.CreateCacheRequest
-	(*UpdateCacheRequest)(nil),  // 1: cache_service.UpdateCacheRequest
-	(*CacheResponse)(nil),       // 2: cache_service.CacheResponse
-	(*KeyCacheRequest)(nil),     // 3: cache_service.KeyCacheRequest
-	(*Empty)(nil),               // 4: cache_service.Empty
-	(*durationpb.Duration)(nil), // 5: google.protobuf.Duration
+	(*Cache)(nil),                  // 0: cache_service.Cache
+	(*Request)(nil),                // 1: cache_service.Request
+	(*Response)(nil),               // 2: cache_service.Response
+	(*Cache_Profile)(nil),          // 3: cache_service.Cache.Profile
+	(*Cache_Avatar)(nil),           // 4: cache_service.Cache.Avatar
+	(*Request_Create)(nil),         // 5: cache_service.Request.Create
+	(*Request_Update)(nil),         // 6: cache_service.Request.Update
+	(*Request_Key)(nil),            // 7: cache_service.Request.Key
+	(*Request_Create_Profile)(nil), // 8: cache_service.Request.Create.Profile
+	(*Request_Create_Avatars)(nil), // 9: cache_service.Request.Create.Avatars
+	(*Request_Update_Profile)(nil), // 10: cache_service.Request.Update.Profile
+	(*Request_Update_Avatars)(nil), // 11: cache_service.Request.Update.Avatars
+	(*Response_Get)(nil),           // 12: cache_service.Response.Get
+	(*Response_Empty)(nil),         // 13: cache_service.Response.Empty
+	(*Response_Get_Profile)(nil),   // 14: cache_service.Response.Get.Profile
+	(*Response_Get_Avatars)(nil),   // 15: cache_service.Response.Get.Avatars
+	(*durationpb.Duration)(nil),    // 16: google.protobuf.Duration
 }
 var file_cache_service_proto_depIdxs = []int32{
-	5, // 0: cache_service.CreateCacheRequest.ttl:type_name -> google.protobuf.Duration
-	5, // 1: cache_service.UpdateCacheRequest.ttl:type_name -> google.protobuf.Duration
-	0, // 2: cache_service.CacheService.Create:input_type -> cache_service.CreateCacheRequest
-	3, // 3: cache_service.CacheService.Get:input_type -> cache_service.KeyCacheRequest
-	3, // 4: cache_service.CacheService.Delete:input_type -> cache_service.KeyCacheRequest
-	1, // 5: cache_service.CacheService.Update:input_type -> cache_service.UpdateCacheRequest
-	4, // 6: cache_service.CacheService.Create:output_type -> cache_service.Empty
-	2, // 7: cache_service.CacheService.Get:output_type -> cache_service.CacheResponse
-	4, // 8: cache_service.CacheService.Delete:output_type -> cache_service.Empty
-	4, // 9: cache_service.CacheService.Update:output_type -> cache_service.Empty
-	6, // [6:10] is the sub-list for method output_type
-	2, // [2:6] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	3,  // 0: cache_service.Request.Create.Profile.ProfileCache:type_name -> cache_service.Cache.Profile
+	16, // 1: cache_service.Request.Create.Profile.ttl:type_name -> google.protobuf.Duration
+	4,  // 2: cache_service.Request.Create.Avatars.AvatarCache:type_name -> cache_service.Cache.Avatar
+	16, // 3: cache_service.Request.Create.Avatars.ttl:type_name -> google.protobuf.Duration
+	3,  // 4: cache_service.Request.Update.Profile.ProfileCache:type_name -> cache_service.Cache.Profile
+	16, // 5: cache_service.Request.Update.Profile.ttl:type_name -> google.protobuf.Duration
+	4,  // 6: cache_service.Request.Update.Avatars.AvatarCache:type_name -> cache_service.Cache.Avatar
+	16, // 7: cache_service.Request.Update.Avatars.ttl:type_name -> google.protobuf.Duration
+	3,  // 8: cache_service.Response.Get.Profile.ProfileCache:type_name -> cache_service.Cache.Profile
+	4,  // 9: cache_service.Response.Get.Avatars.AvatarCache:type_name -> cache_service.Cache.Avatar
+	8,  // 10: cache_service.CacheService.CreateProfile:input_type -> cache_service.Request.Create.Profile
+	7,  // 11: cache_service.CacheService.GetProfile:input_type -> cache_service.Request.Key
+	10, // 12: cache_service.CacheService.UpdateProfile:input_type -> cache_service.Request.Update.Profile
+	9,  // 13: cache_service.CacheService.CreateAvatars:input_type -> cache_service.Request.Create.Avatars
+	7,  // 14: cache_service.CacheService.GetAvatars:input_type -> cache_service.Request.Key
+	11, // 15: cache_service.CacheService.UpdateAvatars:input_type -> cache_service.Request.Update.Avatars
+	7,  // 16: cache_service.CacheService.Delete:input_type -> cache_service.Request.Key
+	13, // 17: cache_service.CacheService.CreateProfile:output_type -> cache_service.Response.Empty
+	14, // 18: cache_service.CacheService.GetProfile:output_type -> cache_service.Response.Get.Profile
+	13, // 19: cache_service.CacheService.UpdateProfile:output_type -> cache_service.Response.Empty
+	13, // 20: cache_service.CacheService.CreateAvatars:output_type -> cache_service.Response.Empty
+	15, // 21: cache_service.CacheService.GetAvatars:output_type -> cache_service.Response.Get.Avatars
+	13, // 22: cache_service.CacheService.UpdateAvatars:output_type -> cache_service.Response.Empty
+	13, // 23: cache_service.CacheService.Delete:output_type -> cache_service.Response.Empty
+	17, // [17:24] is the sub-list for method output_type
+	10, // [10:17] is the sub-list for method input_type
+	10, // [10:10] is the sub-list for extension type_name
+	10, // [10:10] is the sub-list for extension extendee
+	0,  // [0:10] is the sub-list for field type_name
 }
 
 func init() { file_cache_service_proto_init() }
@@ -374,7 +988,7 @@ func file_cache_service_proto_init() {
 	}
 	if !protoimpl.UnsafeEnabled {
 		file_cache_service_proto_msgTypes[0].Exporter = func(v any, i int) any {
-			switch v := v.(*CreateCacheRequest); i {
+			switch v := v.(*Cache); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -386,7 +1000,7 @@ func file_cache_service_proto_init() {
 			}
 		}
 		file_cache_service_proto_msgTypes[1].Exporter = func(v any, i int) any {
-			switch v := v.(*UpdateCacheRequest); i {
+			switch v := v.(*Request); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -398,7 +1012,7 @@ func file_cache_service_proto_init() {
 			}
 		}
 		file_cache_service_proto_msgTypes[2].Exporter = func(v any, i int) any {
-			switch v := v.(*CacheResponse); i {
+			switch v := v.(*Response); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -410,7 +1024,7 @@ func file_cache_service_proto_init() {
 			}
 		}
 		file_cache_service_proto_msgTypes[3].Exporter = func(v any, i int) any {
-			switch v := v.(*KeyCacheRequest); i {
+			switch v := v.(*Cache_Profile); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -422,7 +1036,139 @@ func file_cache_service_proto_init() {
 			}
 		}
 		file_cache_service_proto_msgTypes[4].Exporter = func(v any, i int) any {
-			switch v := v.(*Empty); i {
+			switch v := v.(*Cache_Avatar); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_cache_service_proto_msgTypes[5].Exporter = func(v any, i int) any {
+			switch v := v.(*Request_Create); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_cache_service_proto_msgTypes[6].Exporter = func(v any, i int) any {
+			switch v := v.(*Request_Update); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_cache_service_proto_msgTypes[7].Exporter = func(v any, i int) any {
+			switch v := v.(*Request_Key); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_cache_service_proto_msgTypes[8].Exporter = func(v any, i int) any {
+			switch v := v.(*Request_Create_Profile); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_cache_service_proto_msgTypes[9].Exporter = func(v any, i int) any {
+			switch v := v.(*Request_Create_Avatars); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_cache_service_proto_msgTypes[10].Exporter = func(v any, i int) any {
+			switch v := v.(*Request_Update_Profile); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_cache_service_proto_msgTypes[11].Exporter = func(v any, i int) any {
+			switch v := v.(*Request_Update_Avatars); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_cache_service_proto_msgTypes[12].Exporter = func(v any, i int) any {
+			switch v := v.(*Response_Get); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_cache_service_proto_msgTypes[13].Exporter = func(v any, i int) any {
+			switch v := v.(*Response_Empty); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_cache_service_proto_msgTypes[14].Exporter = func(v any, i int) any {
+			switch v := v.(*Response_Get_Profile); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_cache_service_proto_msgTypes[15].Exporter = func(v any, i int) any {
+			switch v := v.(*Response_Get_Avatars); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -440,7 +1186,7 @@ func file_cache_service_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_cache_service_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   5,
+			NumMessages:   16,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

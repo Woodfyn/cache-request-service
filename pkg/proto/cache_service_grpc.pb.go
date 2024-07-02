@@ -19,20 +19,26 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	CacheService_Create_FullMethodName = "/cache_service.CacheService/Create"
-	CacheService_Get_FullMethodName    = "/cache_service.CacheService/Get"
-	CacheService_Delete_FullMethodName = "/cache_service.CacheService/Delete"
-	CacheService_Update_FullMethodName = "/cache_service.CacheService/Update"
+	CacheService_CreateProfile_FullMethodName = "/cache_service.CacheService/CreateProfile"
+	CacheService_GetProfile_FullMethodName    = "/cache_service.CacheService/GetProfile"
+	CacheService_UpdateProfile_FullMethodName = "/cache_service.CacheService/UpdateProfile"
+	CacheService_CreateAvatars_FullMethodName = "/cache_service.CacheService/CreateAvatars"
+	CacheService_GetAvatars_FullMethodName    = "/cache_service.CacheService/GetAvatars"
+	CacheService_UpdateAvatars_FullMethodName = "/cache_service.CacheService/UpdateAvatars"
+	CacheService_Delete_FullMethodName        = "/cache_service.CacheService/Delete"
 )
 
 // CacheServiceClient is the client API for CacheService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type CacheServiceClient interface {
-	Create(ctx context.Context, in *CreateCacheRequest, opts ...grpc.CallOption) (*Empty, error)
-	Get(ctx context.Context, in *KeyCacheRequest, opts ...grpc.CallOption) (*CacheResponse, error)
-	Delete(ctx context.Context, in *KeyCacheRequest, opts ...grpc.CallOption) (*Empty, error)
-	Update(ctx context.Context, in *UpdateCacheRequest, opts ...grpc.CallOption) (*Empty, error)
+	CreateProfile(ctx context.Context, in *Request_Create_Profile, opts ...grpc.CallOption) (*Response_Empty, error)
+	GetProfile(ctx context.Context, in *Request_Key, opts ...grpc.CallOption) (*Response_Get_Profile, error)
+	UpdateProfile(ctx context.Context, in *Request_Update_Profile, opts ...grpc.CallOption) (*Response_Empty, error)
+	CreateAvatars(ctx context.Context, in *Request_Create_Avatars, opts ...grpc.CallOption) (*Response_Empty, error)
+	GetAvatars(ctx context.Context, in *Request_Key, opts ...grpc.CallOption) (*Response_Get_Avatars, error)
+	UpdateAvatars(ctx context.Context, in *Request_Update_Avatars, opts ...grpc.CallOption) (*Response_Empty, error)
+	Delete(ctx context.Context, in *Request_Key, opts ...grpc.CallOption) (*Response_Empty, error)
 }
 
 type cacheServiceClient struct {
@@ -43,36 +49,63 @@ func NewCacheServiceClient(cc grpc.ClientConnInterface) CacheServiceClient {
 	return &cacheServiceClient{cc}
 }
 
-func (c *cacheServiceClient) Create(ctx context.Context, in *CreateCacheRequest, opts ...grpc.CallOption) (*Empty, error) {
-	out := new(Empty)
-	err := c.cc.Invoke(ctx, CacheService_Create_FullMethodName, in, out, opts...)
+func (c *cacheServiceClient) CreateProfile(ctx context.Context, in *Request_Create_Profile, opts ...grpc.CallOption) (*Response_Empty, error) {
+	out := new(Response_Empty)
+	err := c.cc.Invoke(ctx, CacheService_CreateProfile_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *cacheServiceClient) Get(ctx context.Context, in *KeyCacheRequest, opts ...grpc.CallOption) (*CacheResponse, error) {
-	out := new(CacheResponse)
-	err := c.cc.Invoke(ctx, CacheService_Get_FullMethodName, in, out, opts...)
+func (c *cacheServiceClient) GetProfile(ctx context.Context, in *Request_Key, opts ...grpc.CallOption) (*Response_Get_Profile, error) {
+	out := new(Response_Get_Profile)
+	err := c.cc.Invoke(ctx, CacheService_GetProfile_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *cacheServiceClient) Delete(ctx context.Context, in *KeyCacheRequest, opts ...grpc.CallOption) (*Empty, error) {
-	out := new(Empty)
+func (c *cacheServiceClient) UpdateProfile(ctx context.Context, in *Request_Update_Profile, opts ...grpc.CallOption) (*Response_Empty, error) {
+	out := new(Response_Empty)
+	err := c.cc.Invoke(ctx, CacheService_UpdateProfile_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *cacheServiceClient) CreateAvatars(ctx context.Context, in *Request_Create_Avatars, opts ...grpc.CallOption) (*Response_Empty, error) {
+	out := new(Response_Empty)
+	err := c.cc.Invoke(ctx, CacheService_CreateAvatars_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *cacheServiceClient) GetAvatars(ctx context.Context, in *Request_Key, opts ...grpc.CallOption) (*Response_Get_Avatars, error) {
+	out := new(Response_Get_Avatars)
+	err := c.cc.Invoke(ctx, CacheService_GetAvatars_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *cacheServiceClient) UpdateAvatars(ctx context.Context, in *Request_Update_Avatars, opts ...grpc.CallOption) (*Response_Empty, error) {
+	out := new(Response_Empty)
+	err := c.cc.Invoke(ctx, CacheService_UpdateAvatars_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *cacheServiceClient) Delete(ctx context.Context, in *Request_Key, opts ...grpc.CallOption) (*Response_Empty, error) {
+	out := new(Response_Empty)
 	err := c.cc.Invoke(ctx, CacheService_Delete_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *cacheServiceClient) Update(ctx context.Context, in *UpdateCacheRequest, opts ...grpc.CallOption) (*Empty, error) {
-	out := new(Empty)
-	err := c.cc.Invoke(ctx, CacheService_Update_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -83,10 +116,13 @@ func (c *cacheServiceClient) Update(ctx context.Context, in *UpdateCacheRequest,
 // All implementations must embed UnimplementedCacheServiceServer
 // for forward compatibility
 type CacheServiceServer interface {
-	Create(context.Context, *CreateCacheRequest) (*Empty, error)
-	Get(context.Context, *KeyCacheRequest) (*CacheResponse, error)
-	Delete(context.Context, *KeyCacheRequest) (*Empty, error)
-	Update(context.Context, *UpdateCacheRequest) (*Empty, error)
+	CreateProfile(context.Context, *Request_Create_Profile) (*Response_Empty, error)
+	GetProfile(context.Context, *Request_Key) (*Response_Get_Profile, error)
+	UpdateProfile(context.Context, *Request_Update_Profile) (*Response_Empty, error)
+	CreateAvatars(context.Context, *Request_Create_Avatars) (*Response_Empty, error)
+	GetAvatars(context.Context, *Request_Key) (*Response_Get_Avatars, error)
+	UpdateAvatars(context.Context, *Request_Update_Avatars) (*Response_Empty, error)
+	Delete(context.Context, *Request_Key) (*Response_Empty, error)
 	mustEmbedUnimplementedCacheServiceServer()
 }
 
@@ -94,17 +130,26 @@ type CacheServiceServer interface {
 type UnimplementedCacheServiceServer struct {
 }
 
-func (UnimplementedCacheServiceServer) Create(context.Context, *CreateCacheRequest) (*Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Create not implemented")
+func (UnimplementedCacheServiceServer) CreateProfile(context.Context, *Request_Create_Profile) (*Response_Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateProfile not implemented")
 }
-func (UnimplementedCacheServiceServer) Get(context.Context, *KeyCacheRequest) (*CacheResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Get not implemented")
+func (UnimplementedCacheServiceServer) GetProfile(context.Context, *Request_Key) (*Response_Get_Profile, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetProfile not implemented")
 }
-func (UnimplementedCacheServiceServer) Delete(context.Context, *KeyCacheRequest) (*Empty, error) {
+func (UnimplementedCacheServiceServer) UpdateProfile(context.Context, *Request_Update_Profile) (*Response_Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateProfile not implemented")
+}
+func (UnimplementedCacheServiceServer) CreateAvatars(context.Context, *Request_Create_Avatars) (*Response_Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateAvatars not implemented")
+}
+func (UnimplementedCacheServiceServer) GetAvatars(context.Context, *Request_Key) (*Response_Get_Avatars, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAvatars not implemented")
+}
+func (UnimplementedCacheServiceServer) UpdateAvatars(context.Context, *Request_Update_Avatars) (*Response_Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateAvatars not implemented")
+}
+func (UnimplementedCacheServiceServer) Delete(context.Context, *Request_Key) (*Response_Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
-}
-func (UnimplementedCacheServiceServer) Update(context.Context, *UpdateCacheRequest) (*Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Update not implemented")
 }
 func (UnimplementedCacheServiceServer) mustEmbedUnimplementedCacheServiceServer() {}
 
@@ -119,44 +164,116 @@ func RegisterCacheServiceServer(s grpc.ServiceRegistrar, srv CacheServiceServer)
 	s.RegisterService(&CacheService_ServiceDesc, srv)
 }
 
-func _CacheService_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateCacheRequest)
+func _CacheService_CreateProfile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Request_Create_Profile)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CacheServiceServer).Create(ctx, in)
+		return srv.(CacheServiceServer).CreateProfile(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: CacheService_Create_FullMethodName,
+		FullMethod: CacheService_CreateProfile_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CacheServiceServer).Create(ctx, req.(*CreateCacheRequest))
+		return srv.(CacheServiceServer).CreateProfile(ctx, req.(*Request_Create_Profile))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _CacheService_Get_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(KeyCacheRequest)
+func _CacheService_GetProfile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Request_Key)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CacheServiceServer).Get(ctx, in)
+		return srv.(CacheServiceServer).GetProfile(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: CacheService_Get_FullMethodName,
+		FullMethod: CacheService_GetProfile_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CacheServiceServer).Get(ctx, req.(*KeyCacheRequest))
+		return srv.(CacheServiceServer).GetProfile(ctx, req.(*Request_Key))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CacheService_UpdateProfile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Request_Update_Profile)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CacheServiceServer).UpdateProfile(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CacheService_UpdateProfile_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CacheServiceServer).UpdateProfile(ctx, req.(*Request_Update_Profile))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CacheService_CreateAvatars_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Request_Create_Avatars)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CacheServiceServer).CreateAvatars(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CacheService_CreateAvatars_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CacheServiceServer).CreateAvatars(ctx, req.(*Request_Create_Avatars))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CacheService_GetAvatars_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Request_Key)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CacheServiceServer).GetAvatars(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CacheService_GetAvatars_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CacheServiceServer).GetAvatars(ctx, req.(*Request_Key))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CacheService_UpdateAvatars_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Request_Update_Avatars)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CacheServiceServer).UpdateAvatars(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CacheService_UpdateAvatars_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CacheServiceServer).UpdateAvatars(ctx, req.(*Request_Update_Avatars))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _CacheService_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(KeyCacheRequest)
+	in := new(Request_Key)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -168,25 +285,7 @@ func _CacheService_Delete_Handler(srv interface{}, ctx context.Context, dec func
 		FullMethod: CacheService_Delete_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CacheServiceServer).Delete(ctx, req.(*KeyCacheRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _CacheService_Update_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateCacheRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(CacheServiceServer).Update(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: CacheService_Update_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CacheServiceServer).Update(ctx, req.(*UpdateCacheRequest))
+		return srv.(CacheServiceServer).Delete(ctx, req.(*Request_Key))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -199,20 +298,32 @@ var CacheService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*CacheServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "Create",
-			Handler:    _CacheService_Create_Handler,
+			MethodName: "CreateProfile",
+			Handler:    _CacheService_CreateProfile_Handler,
 		},
 		{
-			MethodName: "Get",
-			Handler:    _CacheService_Get_Handler,
+			MethodName: "GetProfile",
+			Handler:    _CacheService_GetProfile_Handler,
+		},
+		{
+			MethodName: "UpdateProfile",
+			Handler:    _CacheService_UpdateProfile_Handler,
+		},
+		{
+			MethodName: "CreateAvatars",
+			Handler:    _CacheService_CreateAvatars_Handler,
+		},
+		{
+			MethodName: "GetAvatars",
+			Handler:    _CacheService_GetAvatars_Handler,
+		},
+		{
+			MethodName: "UpdateAvatars",
+			Handler:    _CacheService_UpdateAvatars_Handler,
 		},
 		{
 			MethodName: "Delete",
 			Handler:    _CacheService_Delete_Handler,
-		},
-		{
-			MethodName: "Update",
-			Handler:    _CacheService_Update_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
