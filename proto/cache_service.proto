@@ -52,6 +52,11 @@ message Request {
     message Key {
         string key = 1;
     }
+
+    message KeyAndTtl {
+        string key = 1;
+        google.protobuf.Duration ttl = 2;
+    }
 }
 
 message Response {
@@ -79,4 +84,5 @@ service CacheService {
     rpc UpdateAvatars(Request.Update.Avatars) returns (Response.Empty) {}
 
     rpc Delete(Request.Key) returns (Response.Empty) {}
+    rpc UpdateTtl(Request.KeyAndTtl) returns (Response.Empty) {}
 }
