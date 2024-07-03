@@ -3,13 +3,13 @@ package app
 import (
 	"context"
 
-	"github.com/Woodfyn/chat-api-cache-service/internal/config"
-	"github.com/Woodfyn/chat-api-cache-service/internal/handler"
-	"github.com/Woodfyn/chat-api-cache-service/internal/repository/rdb"
-	"github.com/Woodfyn/chat-api-cache-service/internal/server"
-	"github.com/Woodfyn/chat-api-cache-service/internal/service"
-	"github.com/Woodfyn/chat-api-cache-service/pkg/rdbclient"
-	"github.com/Woodfyn/chat-api-cache-service/pkg/signaler"
+	"github.com/Woodfyn/nexus-chat.cache-service/internal/config"
+	"github.com/Woodfyn/nexus-chat.cache-service/internal/handler"
+	"github.com/Woodfyn/nexus-chat.cache-service/internal/repository/rdb"
+	"github.com/Woodfyn/nexus-chat.cache-service/internal/server"
+	"github.com/Woodfyn/nexus-chat.cache-service/internal/service"
+	"github.com/Woodfyn/nexus-chat.cache-service/pkg/rdbclient"
+	"github.com/Woodfyn/nexus-chat.cache-service/pkg/signaler"
 )
 
 var (

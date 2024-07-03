@@ -1,6 +1,6 @@
 package core
 
-import cache_service "github.com/Woodfyn/chat-api-cache-service/pkg/proto"
+import cache_service "github.com/Woodfyn/nexus-chat.cache-service/pkg/proto"
 
 type Avatar struct {
 	ID        int64

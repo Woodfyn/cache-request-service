@@ -4,7 +4,7 @@ import (
 	"context"
 	"errors"
 
-	"github.com/Woodfyn/chat-api-cache-service/pkg/core"
+	"github.com/Woodfyn/nexus-chat.cache-service/pkg/core"
 	"github.com/redis/go-redis/v9"
 )
 

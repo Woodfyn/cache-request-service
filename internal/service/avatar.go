@@ -3,8 +3,8 @@ package service
 import (
 	"context"
 
-	"github.com/Woodfyn/chat-api-cache-service/pkg/core"
-	cache_service "github.com/Woodfyn/chat-api-cache-service/pkg/proto"
+	"github.com/Woodfyn/nexus-chat.cache-service/pkg/core"
+	cache_service "github.com/Woodfyn/nexus-chat.cache-service/pkg/proto"
 )
 
 func (c *Cache) CreateAvatars(ctx context.Context, req *cache_service.Request_Create_Avatars) (*cache_service.Response_Empty, error) {

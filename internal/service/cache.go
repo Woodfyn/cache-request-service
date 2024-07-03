@@ -4,8 +4,8 @@ import (
 	"context"
 	"time"
 
-	"github.com/Woodfyn/chat-api-cache-service/pkg/core"
-	cache_service "github.com/Woodfyn/chat-api-cache-service/pkg/proto"
+	"github.com/Woodfyn/nexus-chat.cache-service/pkg/core"
+	cache_service "github.com/Woodfyn/nexus-chat.cache-service/pkg/proto"
 )
 
 type CacheRepositoryRedis interface {
